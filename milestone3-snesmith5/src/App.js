@@ -23,7 +23,7 @@ function App() {
     console.log(data);
   }
   function handleClick(comment_id) {
-    fetch('/delete', {
+    fetch('/rate', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ ratings: data })
@@ -33,6 +33,16 @@ function App() {
     if (ratings !== null) {
       return ratings;
     }
+  }
+  function saveChange() {
+    fetch('save'),
+      {
+        method: 'POST',
+        body: JSON.stringify(ratings),
+      }
+        .then(response => response.json())
+        .then(data => { console.log('Success', data) })
+        .catch((error) => console.log('Error:', error))
   }
   useEffect(() => { getJSON() }, [])
 }
