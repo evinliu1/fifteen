@@ -22,7 +22,14 @@ function App() {
     // this.setline("Button clicked");
     console.log(data);
   }
-  function handleClick() {
+  function handleClick(comment_id) {
+    fetch('/delete', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ ratings: data })
+
+    }).then(response => response.json()).then(data => { alert(data) })
+
     if (ratings !== null) {
       return ratings;
     }
