@@ -183,7 +183,7 @@ bp = flask.Blueprint(
 )
 
 # route for serving React page
-@bp.route("/route")
+@bp.route("/rate")
 def index():
     # NB: DO NOT add an "index.html" file in your normal templates folder
     # Flask will stop serving this React page correctly
