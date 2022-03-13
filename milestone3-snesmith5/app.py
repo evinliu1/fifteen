@@ -24,46 +24,30 @@ app.secret_key = b"I am a secret key!"  # don't defraud my app ok?
 db = SQLAlchemy(app)
 
 
-@app.route("/rate", methods=["POST"])
-# by create-react-app/npm run build.
-def setData():
-    rates = Rating.query.filter_by(username=user_input.username).all()
-    rate_data = []
-    for rate in rates:
-        rate_data.append(
-            {
-                "id": rate.id,
-                "rating": rate.rating,
-                "comment": rate.comment,
-                "username": rate.username,
-                "movie_id": rate.movie_id,
-            }
-        )
-        return flask.jsonify(rate_data)
-    # movie_id = []
-    # comment = []
-    # rating = []
-    # title = []
-    # for i in rate:
-    #     movie_id.append(i.movie_id)
-    #     title.append(i.title)
-    #     comment.append(i.comment)
-    #     rating.append(i.rating)
+# movie_id = []
+# comment = []
+# rating = []
+# title = []
+# for i in rate:
+#     movie_id.append(i.movie_id)
+#     title.append(i.title)
+#     comment.append(i.comment)
+#     rating.append(i.rating)
 
-    #     db.session.begin()
-    #     db.session.add(comment)
-    #     db.session.commit()
-    #     db.session.begin()
-    #     db.session.add(rate)
-    #     db.session.commit()
+#     db.session.begin()
+#     db.session.add(comment)
+#     db.session.commit()
+#     db.session.begin()
+#     db.session.add(rate)
+#     db.session.commit()
 
-    # # print(comments/ratings)
-    # return flask.jsonify(
-    #     {"movie_id": movie_id},
-    #     {"comment": comment},
-    #     {"rating": rating},
-    #     {"title": title},
-    # )
+# # print(comments/ratings)
+# return flask.jsonify(
+#     {"movie_id": movie_id},
+#     {"comment": comment},
+#     {"rating": rating},
+#     {"title": title},
+# )
 
 
 def main():

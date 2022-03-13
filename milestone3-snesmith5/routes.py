@@ -61,6 +61,25 @@ MOVIE_IDS = [
 ]
 
 
+@app.route("/rate")
+# @app.add_url_rule("/rate", methods=["GET", "POST"])
+# by create-react-app/npm run build.
+def setData():
+    rates = Rating.query.filter_by(username=current_user.username).all()
+    rate_data = []
+    for rate in rates:
+        rate_data.append(
+            {
+                "id": rate.id,
+                "rating": rate.rating,
+                "comment": rate.comment,
+                "username": rate.username,
+                "movie_id": rate.movie_id,
+            }
+        )
+    return flask.jsonify(rate_data)
+
+
 @app.route("/rate", methods=["POST"])
 def rate():
     data = flask.request.form
