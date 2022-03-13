@@ -3,21 +3,18 @@ import './App.css';
 // import useState Hook -- lets us keep local state function component
 import React, { useState, useEffect } from 'react'
 
-function Reviews() {
-  const [ratings, setRatings] = useState(Array(9).fill(null));
-}
-function handleClick() {
-  if (ratings !== null) {
-    return ratings;
-  }
-  // newSquares[i] = newSquares[i] === null ? currPlayer : newSquares[i];
-  // const newWinner = computeWinner(newSquares);
-  // setWinner(newWinner);
-  // setSquares(newSquares);
-}
+// function Reviews() {
+//   const [ratings, setRatings] = useState(Array(9).fill(null));
+// }
+
+// newSquares[i] = newSquares[i] === null ? currPlayer : newSquares[i];
+// const newWinner = computeWinner(newSquares);
+// setWinner(newWinner);
+// setSquares(newSquares);
 function App() {
   const [ratings, setRatings] = useState([]);
   //function used to retrieve data from python file
+
   function getJSON() {
     fetch('/rate')
       .then(response => response.json())
@@ -25,7 +22,14 @@ function App() {
     // this.setline("Button clicked");
     console.log(data);
   }
+  function handleClick() {
+    if (ratings !== null) {
+      return ratings;
+    }
+  }
+  useEffect(() => { getJSON() }, [])
 }
+
 
 // userEffect tells react to do 'something' after every render
 useEffect(() => {
@@ -45,17 +49,18 @@ Map(ratings => {
     // react re-renders comment component pasing new input to it
     <div>
       <p>Here is your new input {ratings}</p>
-      <button onClick={() => setInput(ratings)}>
+      {/* <button onClick={handleClick => setRatings(ratings)}>
         Update
-      </button>
+      </button> */}
 
+      <button onClick={handleClick}>Delete Review</button>
+      <p>{ratings}</p>
     </div>
+
   )
 }
 
 
 );
 export default App;
-console.log(getJSON());
-console.log(Ratings());
-console.log(handleClick());
+
