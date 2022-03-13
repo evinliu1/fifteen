@@ -17,15 +17,16 @@ function handleClick() {
 }
 function App() {
   const [ratings, setRatings] = useState([]);
+  //function used to retrieve data from python file
+  function getJSON() {
+    fetch('/rate')
+      .then(response => response.json())
+      .then(data => setRatings(ratings));
+    // this.setline("Button clicked");
+    console.log(data);
+  }
 }
-//function used to retrieve data from python file
-function getJSON() {
-  fetch('/rate')
-    .then(response => response.json())
-    .then(data => setYourLine(data));
-  // this.setline("Button clicked");
-  console.log(data);
-}
+
 // userEffect tells react to do 'something' after every render
 useEffect(() => {
   // displays after every render
