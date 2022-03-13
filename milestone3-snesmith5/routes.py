@@ -22,7 +22,7 @@ def load_user(user_name):
 
 @app.route("/signup")
 def signup():
-    return flask.render_template("../templates/signup.html")
+    return flask.render_template("signup.html")
 
 
 @app.route("/signup", methods=["POST"])
@@ -41,7 +41,7 @@ def signup_post():
 
 @app.route("/login")
 def login():
-    return flask.render_template("../templates/login.html")
+    return flask.render_template("login.html")
 
 
 @app.route("/login", methods=["POST"])
