@@ -187,7 +187,7 @@ bp = flask.Blueprint(
 def index():
     # NB: DO NOT add an "index.html" file in your normal templates folder
     # Flask will stop serving this React page correctly
-    return flask.render_template("index.html")
+    return flask.render_template("main.html")
 
 
 app.register_blueprint(bp)
