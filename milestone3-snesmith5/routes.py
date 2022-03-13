@@ -125,7 +125,7 @@ def index():
     wikipedia_url = get_wiki_link(title)
 
     ratings = Rating.query.filter_by(movie_id=movie_id).all()
-
+    print(ratings)
     return flask.render_template(
         "index.html",
         title=title,

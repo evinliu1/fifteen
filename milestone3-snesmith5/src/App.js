@@ -24,8 +24,8 @@ function comment() {
   });
   // comment_list = Map(comment, input);
 
-  return
-  (
+  return (
+
     // when user clicks call setinput with a new value
     // react re-renders comment component pasing new input to it
     <div>
