@@ -104,7 +104,7 @@ def rate():
 @app.route("/")
 def landing():
     if current_user.is_authenticated:
-        return flask.redirect("index")
+        return flask.redirect(flask.url_for("index"))
     return flask.redirect("login")
 
 
@@ -127,7 +127,7 @@ def index():
     ratings = Rating.query.filter_by(movie_id=movie_id).all()
     print(ratings)
     return flask.render_template(
-        "index.html",
+        "main.html",
         title=title,
         tagline=tagline,
         genre=genre,
@@ -184,10 +184,16 @@ bp = flask.Blueprint(
 
 # route for serving React page
 @bp.route("/route")
-def index():
+def blueprint():
     # NB: DO NOT add an "index.html" file in your normal templates folder
     # Flask will stop serving this React page correctly
-    return flask.render_template("main.html")
+    return flask.render_template("index.html")
+
+
+@app.route("/save", methods=["GET"])
+def save_Change():
+
+    pass
 
 
 app.register_blueprint(bp)
