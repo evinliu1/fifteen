@@ -24,8 +24,16 @@ function App() {
         setRatings(data)
       });
     // this.setline("Button clicked");
-
+    // function deleteReview() {
+    //   fetch('/delete')
+    //     .then(response => response.json())
+    //     .then(data => {
+    //       console.log(data)
+    //       setRatings()
+    //     })
+    // }
   }
+
   function saveChanges() {
     fetch('/save'),
       {

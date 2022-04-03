@@ -1,23 +1,25 @@
 /* eslint no-undef: 0, no-unused-expressions: 0*/
 
-function Review({ review }) {
-
+function Review({ review, setRatings, ratings }) {
+    // generated when user presses button--tells server to do something and request is handles in routes.py
     function handleClick(comment_id) {
-        fetch('http://192.168.1.185:4444/rate?', {
-            method: 'GET',
+        fetch('/rate', {
+            method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ ratings: data })
+            // creates object comment id
+            body: JSON.stringify({ comment_id })
 
-        }).then(response => response.text()).then(data => { alert(data) })
-
-        if (ratings !== null) {
-            return ratings;
-        }
+        }).then(response => response.text()).then(data => {
+            alert()
+            setRatings(ratings.filter(rating => rating.id !== comment_id))
+        })
     }
+
 
     return (
         <div>
-            <p>Here is your new input {review.username}</p>
+            <p>Reiview: {review.comment}</p>  <p>Rating: {review.rating}</p>
+
             {/* <button onClick={handleClick => setRatings(ratings)}>
       Update
     </button> */}
@@ -25,9 +27,11 @@ function Review({ review }) {
             {/* // when user clicks call setinput with a new value
 // react re-renders comment component pasing new input to it
     */}
-            <button onClick={handleClick}>Delete Review</button>
-            <p>{review.username}</p>
+            <button onClick={() => { handleClick(review.id) }}>Delete Review</button>
+            {/* <p>{review.comment}</p> */}
         </div>
     )
 }
+
+
 export default Review;

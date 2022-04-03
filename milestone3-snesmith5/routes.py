@@ -1,4 +1,6 @@
-from app import app, db
+from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import null
+from app import app
 import random
 import os
 
@@ -9,6 +11,8 @@ from models import User, Rating, user_input
 
 from wikipedia import get_wiki_link
 from tmdb import get_movie_data
+
+db = SQLAlchemy(app)
 
 login_manager = LoginManager()
 login_manager.login_view = "login"
@@ -82,23 +86,31 @@ def setData():
 
 @app.route("/rate", methods=["POST"])
 def rate():
-    data = flask.request.form
-    rating = data.get("rating")
-    comment = data.get("comment")
-    movie_id = data.get("movie_id")
-    # title = data.get("title")
+    # 'catching' json data sent from post requrst in reviews.js
+    data = flask.request.get_json()
 
-    new_rating = Rating(
-        username=current_user.username,
-        rating=rating,
-        comment=comment,
-        movie_id=movie_id,
-        # title=title,
-    )
-
-    db.session.add(new_rating)
+    print(data)
+    # fetching specific rating from database and deleting it
+    review = Rating.query.get(data["comment_id"])
+    db.session.pop(review, None)
     db.session.commit()
-    return flask.redirect("index")
+    return "success!"
+    # rating = data.get("rating")
+    # comment = data.get("comment")
+    # movie_id = data.get("movie_id")
+    # # title = data.get("title")
+
+    # new_rating = Rating(
+    #     username=current_user.username,
+    #     rating=rating,
+    #     comment=comment,
+    #     movie_id=movie_id,
+    #     # title=title,
+    # )
+
+    # db.session.add(new_rating)
+    # db.session.commit()
+    # return flask.redirect("index")
 
 
 @app.route("/")
