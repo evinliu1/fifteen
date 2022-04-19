@@ -1,73 +1,65 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-
-<!-- CSE 190 M, Spring 2008, Homework 4: Fifteen Puzzle -->
-
+<!DOCTYPE html>
+<html>
 <head>
-    <title>Fifteen Puzzle</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-
-
-    <link rel="stylesheet" type="text/css" href="fifteen_style.css" />
-    <link rel="shortcut icon" type="image/gif"
-        href="http://www.cs.washington.edu/education/courses/cse190m/08sp/homework/4/fifteen.gif" />
-
-    <script type="text/javascript" src="fifteen_script.js"></script>
-    <script type="text/javascript"
-        src="http://www.cs.washington.edu/education/courses/cse190m/08sp/prototype.js"></script>
-
+	<link href="https://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta charset="UTF-8">
+    <title>FIFTEEN PUZZLE</title>
 </head>
+<body onload="onRestart(-1)">
+<div id="title">
+<h1>Fifteen Puzzle Game</h1>
+<p id="timer"><strong>Timer :- </strong></p> 
+<div id="Audio">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+    <audio id="myAudio" controls>
+      <source src="bg.mp3" type="audio/ogg">
+    </audio><br><br>
+     <br><br>
+    </div>
+<div id="tableDiv">
+</div>
+<h4>Choose your image and then select New Game.</h4>
+</div>
+<div id="buttonGroup">
+<select id="dem">
+<option>4 X 4</option>
+<option>6 X 6</option>
+<option>8 X 8</option>
+</select>&nbsp&nbsp
+<button class="buttons" onclick="onRestart(-3); timerStart();"><span>NEW GAME</span></button>
+</div>
 
-<body>
 
-    <!-- <p class="explanation">
-        The goal of the fifteen puzzle is to un-jumble its fifteen squares by repeatedly making moves that slide squares
-        into the empty space. How quickly can you solve it?
-    </p> -->
-
-    <div id="overall">
-        <div id="puzzlearea">
-            <!-- the following are the fifteen puzzle pieces -->
-            <div>1</div>
-            <div>2</div>
-            <div>3</div>
-            <div>4</div>
-            <div>5</div>
-            <div>6</div>
-            <div>7</div>
-            <div>8</div>
-            <div>9</div>
-            <div>10</div>
-            <div>11</div>
-            <div>12</div>
-            <div>13</div>
-            <div>14</div>
-            <div>15</div>
-        </div>
-
-        <div id="controls">
-            <button id="shufflebutton">Shuffle</button>
-        </div>
+<br>
+<div id="imgSelect">
+	&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+<label>
+    <input class="raidoButton" type="radio" id="bgButton1" checked="checked" value="background.jpg" onclick="pictureSelect(this)"/>
+    <img src="background.jpg" alt="bg1" id="bg"/>&nbsp&nbsp
+</label>
+<label>
+    <input class="raidoButton" type="radio" id="bgButton2" checked="checked" value="background1.jpg" onclick="pictureSelect(this)"/>
+    <img style = "background-size:400px 400px" src="background1.jpg" alt="bg2" id="bg1">&nbsp&nbsp
+</label>
+<label>
+    <input class="raidoButton" type="radio" id="bgButton3" checked="checked"  value="background2.jpg" onclick="pictureSelect(this)"/>
+    <img src="background2.jpg" alt="bg3" id="bg2">&nbsp&nbsp
+</label>
+<label>
+    <input class="raidoButton" type="radio" id="bgButton4" checked="checked"  value="background3.jpg" onclick="pictureSelect(this)"/>
+<img src="background3.jpg" alt="bg4" id="bg3">
+</label>
+</div>
+<div id="shuffleBt" class="btn-group">
+    &nbsp&nbsp&nbsp&nbsp&nbsp<button onclick="onRestart(-3); timerStart();" class="buttons1" >SHUFFLE</button><br><br><br>&nbsp&nbsp
+    <button onclick="onRestart(1); setTimeout(check, 3000);" type="button" class="buttons1">CHEAT</button><br><br><br>&nbsp&nbsp
+    <button onclick="finish1()" class="buttons1"> END GAME </button>
+    </div>
+    <div id="links">
+        <img src="css.png" alt="css" id="css" onclick="goTo(this)"> 
+        <img src="html.png" alt="html" id="html" onclick="goTo(this)">
     </div>
 
-    <!-- <p class="explanation">
-        American puzzle author and mathematician Sam Loyd is often falsely credited with creating the puzzle; indeed,
-        Loyd claimed from 1891 until his death in 1911 that he invented it. The puzzle was actually created around 1874
-        by Noyes Palmer Chapman, a postmaster in Canastota, New York.
-    </p> -->
-
-    <div id="w3c">
-        <a href="http://validator.w3.org/check/referer"><img class="w3c"
-                src="http://www.cs.washington.edu/education/courses/cse190m/08sp/homework/4/w3c-xhtml.png"
-                alt="Valid XHTML 1.1" /></a>
-        <a href="http://jigsaw.w3.org/css-validator/check/referer"><img class="w3c"
-                src="http://www.cs.washington.edu/education/courses/cse190m/08sp/homework/4/w3c-css.png"
-                alt="Valid CSS" /></a>
-        <a href="http://www.cs.washington.edu/education/courses/cse190m/08sp/jslint.html"><img
-                src="http://www.cs.washington.edu/education/courses/cse190m/08sp/homework/4/jslint.png"
-                alt="JavaScript Lint" /></a>
-    </div>
-
+<script src="fifteen.js"></script>
 </body>
-
 </html>
